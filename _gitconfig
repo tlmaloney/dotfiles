@@ -27,3 +27,4 @@
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
+    meld = !/home/tmaloney/gitdev/com.github/wmanley/git-meld/git-meld.pl
