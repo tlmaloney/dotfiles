@@ -138,7 +138,17 @@ if [ "$venwrap" != "" ]; then
     source $venwrap
 fi
 
-alias vim="emacs"
+vim=`type -P vim`
+if [ "$vim" == "" ]; then
+    vim="gvim -v"
+fi
+
+alias vim="$vim"
+
+# osx vim
+if [ -x "/Applications/MacVim.app/Contents/MacOS/Vim" ]; then
+    PATH=/Applications/MacVim.app/Contents/MacOS/:$PATH
+fi
 
 PYTHONSTARTUP=~/.pythonrc.py
 export PYTHONSTARTUP
@@ -156,9 +166,9 @@ parse_svn_url() {
 parse_svn_repository_root() {
   svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
 }
-set -o vi
-export EDITOR="emacs"
-export GIT_EDITOR="emacs"
+#set -o vi
+export EDITOR="vim"
+export GIT_EDITOR="vim"
 
 # Add git and svn branch names
 export PS1="$PS1\$(parse_git_branch)\$(parse_svn_branch) "
@@ -184,3 +194,23 @@ _complete_hosts () {
 
 complete -F _complete_hosts ssh
 complete -F _complete_hosts host
+
+export PIP_DOWNLOAD_CACHE=$HOME/Dropbox/pip-download-cache
+source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=~/vedev
+export PATH=$PATH:~/hgdev/org.bitbucket/tlmaloney/mysh
+alias add-bb-key='eval `ssh-agent`;ssh-add ~/Dropbox/config/ssh/bb-tlmaloney'
+alias add-gh-key='eval `ssh-agent`;ssh-add ~/Dropbox/config/ssh/gh-tlmaloney'
+
+# Bash history for multiple terminal windows
+# http://askubuntu.com/a/80882
+[ -d ~/.history ] || mkdir --mode=0700 ~/.history
+[ -d ~/.history ] && chmod 0700 ~/.history
+HISTFILE=~/.history/history.$$
+# close any old history file by zeroing HISTFILESIZE  
+HISTFILESIZE=0  
+# then set HISTFILESIZE to a large value
+HISTFILESIZE=4096  
+HISTSIZE=4096  
+
+alias rm="trash-put"

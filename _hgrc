@@ -1,2 +1,40 @@
 [ui]
-username = sontek <sontek@gmail.com>
+#------------------------------------------------------------------------------ 
+# Step 1: change this to your email address
+#------------------------------------------------------------------------------
+username = Thomas Maloney <tmaloney@autonomycapital.com>
+editor=vi
+merge=meld
+ssh=ssh -C
+
+[email]
+method = smtp
+#------------------------------------------------------------------------------ 
+# Step 2: change this to your email address
+#------------------------------------------------------------------------------
+from = Thomas Maloney <tmaloney@autonomycapital.com>
+
+[smtp]
+#------------------------------------------------------------------------------ 
+# Step 3: change this to your smtp server
+#------------------------------------------------------------------------------
+host = smtp
+tls = false
+
+[extensions]
+hgext.bookmarks=
+hggit=
+progress = 
+hgext.hgk=
+hgext.graphlog=
+hgext.patchbomb=
+hgext.extdiff=
+hgbb = $HOME/hgdev/org.bitbucket/tlmaloney/hgbb/hgbb.py
+
+[extdiff]
+cmd.cdiff = colordiff
+opts.cdiff = -uprN
+
+[bb]
+username = tlmaloney
+default_method = ssh
