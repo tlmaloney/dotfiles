@@ -199,8 +199,8 @@ export PIP_DOWNLOAD_CACHE=$HOME/Dropbox/pip-download-cache
 source /usr/local/bin/virtualenvwrapper.sh
 export WORKON_HOME=~/vedev
 export PATH=$PATH:~/hgdev/org.bitbucket/tlmaloney/mysh
-alias add-bb-key='eval `ssh-agent`;ssh-add ~/Dropbox/config/ssh/bb-tlmaloney'
-alias add-gh-key='eval `ssh-agent`;ssh-add ~/Dropbox/config/ssh/gh-tlmaloney'
+alias add-bb-key='ssh-add ~/Dropbox/config/ssh/bb-tlmaloney'
+alias add-gh-key='ssh-add ~/Dropbox/config/ssh/gh-tlmaloney'
 
 # Bash history for multiple terminal windows
 # http://askubuntu.com/a/80882
@@ -214,3 +214,8 @@ HISTFILESIZE=4096
 HISTSIZE=4096  
 
 alias rm="trash-put"
+
+# Saves SSH_AUTH_SOCK and SSH_AGENT_PID
+# ~/.ssh-agent used for a cron job to get these env variables
+echo "export SSH_AGENT_PID="$SSH_AGENT_PID > ~/.ssh-agent
+echo "export SSH_AUTH_SOCK="$SSH_AUTH_SOCK >> ~/.ssh-agent
