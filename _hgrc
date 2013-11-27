@@ -23,13 +23,13 @@ tls = false
 
 [extensions]
 hgext.bookmarks=
-hggit=
 progress = 
 hgext.hgk=
 hgext.graphlog=
 hgext.patchbomb=
 hgext.extdiff=
 hgbb = $HOME/hgdev/org.bitbucket/tlmaloney/hgbb/hgbb.py
+purge =
 
 [extdiff]
 cmd.cdiff = colordiff
