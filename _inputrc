@@ -43,3 +43,6 @@ $endif
 # IPython needs this to appear at the bottom of the
 # file for clear-screen to work
 #set keymap vi
+
+"\e[5~": history-search-forward
+"\e[6~": history-search-backward
